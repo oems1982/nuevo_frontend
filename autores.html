@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar Autores - MyBooks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Gestión de Autores</h1>
+    <a href="index.html" style="text-decoration: none; color: #007bff;">Volver al Dashboard</a>
+  </header>
+
+  <main class="container">
+    <h2>Lista de Autores</h2>
+    <p>Aquí puedes ver y eliminar autores. La eliminación es una ruta protegida por JWT.</p>
+    
+    <table id="authors-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Biografía</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="authors-table-body">
+        </tbody>
+    </table>
+  </main>
+
+  <div id="message-area"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/autores.js"></script>
+</body>
+</html>

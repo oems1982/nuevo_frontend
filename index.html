@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBooks Frontend (Vanilla)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-view">
+      <section class="container">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form">
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Entrar</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;">
+        ¿No tienes cuenta? 
+        <a href="registrar.html">Regístrate aquí</a>
+      </p>
+      </section>
+    </div>
+
+    <div id="content-view" class="hidden">
+      <header>
+        <h1>Bienvenido a MyBooks</h1>
+        <button id="logout-button">Cerrar Sesión</button>
+      </header>
+
+      <main class="container">
+        <h2>Gestión</h2>
+        <a href="autores.html" class="button-link">Gestionar Autores</a>
+
+        <hr />
+
+        <hr />
+
+        <h2>🔖 Crear Nueva Categoría</h2>
+        <form id="category-form"></form>
+      </main>
+    </div>
+
+    <div id="message-area"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
