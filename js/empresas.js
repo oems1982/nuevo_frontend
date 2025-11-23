@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 2. OBTENER REFERENCIAS DEL DOM ---
-  const tableBody = document.getElementById("authors-table-body");
+  const tableBody = document.getElementById("empresas-table-body");
   const messageArea = document.getElementById("message-area");
 
   // --- 3. FUNCIONES DE LA APLICACIÓN ---
@@ -30,26 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * (ENDPOINT: GET /api/autores)
-   * Carga y muestra la lista de autores en la tabla
+   * (ENDPOINT: GET /api/empresas)
+   * Carga y muestra la lista de empresas en la tabla
    */
-  async function loadAuthors() {
+  async function loadEmpresas() {
     try {
       // Usamos fetchApi, que es público para GET
-      const response = await fetchApi("/autores");
+      const response = await fetchApi("/empresas");
       const data = await response.json();
 
       if (!response.ok) throw new Error(data.message);
 
       tableBody.innerHTML = ""; // Limpiar tabla
 
-      data.data.forEach((author) => {
+      data.data.forEach((empresa) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${author.first_name} ${author.last_name}</td>
-          <td>${author.biography || "N/A"}</td>
+          <td>${empresa.name} ${empresa.nit}</td>
+          <td>${empresa.adress || "N/A"}</td>
           <td>
-            <button class="delete-button" data-id="${author._id}">
+            <button class="delete-button" data-id="${empresa._id}">
               Eliminar (Protegido)
             </button>
           </td>
@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * (ENDPOINT: DELETE /api/autores/:id)
-   * Elimina un autor usando la ruta protegida
+   * (ENDPOINT: DELETE /api/empresas/:id)
+   * Elimina una empresa usando la ruta protegida
    */
-  async function deleteAuthor(authorId) {
+  async function deleteEmpresa(empresaId) {
     try {
       // ¡Esta es la ruta protegida!
       // 'fetchApi' añadirá el token 'x-token' automáticamente.
-      const response = await fetchApi(`/autores/${authorId}`, {
+      const response = await fetchApi(`/empresas/${empresaId}`, {
         method: "DELETE",
       });
 
@@ -80,10 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // ¡ÉXITO!
-      showMessage("Autor eliminado correctamente.", false);
+      showMessage("Empresa eliminado correctamente.", false);
 
-      // Refrescar la lista de autores
-      loadAuthors();
+      // Refrescar la lista de empresas
+      loadEmpresas();
     } catch (error) {
       showMessage(error.message, true);
     }
@@ -95,15 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleTableClick(event) {
     // Verificar si se hizo clic en un botón de "eliminar"
     if (event.target.classList.contains("delete-button")) {
-      const authorId = event.target.dataset.id;
+      const empresaId = event.target.dataset.id;
 
       // Pedir confirmación
       if (
         confirm(
-          `¿Estás seguro de que deseas eliminar al autor con ID: ${authorId}?`
+          `¿Estás seguro de que deseas eliminar la empresa con ID: ${empresaId}?`
         )
       ) {
-        deleteAuthor(authorId);
+        deleteEmpresa(empresaId);
       }
     }
   }
@@ -113,6 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Asignar el manejador de eventos a la tabla
   tableBody.addEventListener("click", handleTableClick);
 
-  // Cargar los autores al iniciar la página
-  loadAuthors();
+  // Cargar las empresas al iniciar la página
+  loadEmpresas();
 });
