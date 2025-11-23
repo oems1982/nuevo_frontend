@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar Carnets - ID App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Gestión de Carnets</h1>
+    <a href="index.html" style="text-decoration: none; color: #007bff;">Volver al Dashboard</a>
+  </header>
+
+  <main class="container">
+    <h2>Lista de Carnets</h2>
+    <p>Aquí puedes ver y eliminar carnets. La eliminación es una ruta protegida por JWT.</p>
+    
+    <table id="carnets-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Documento</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="carnets-table-body">
+        </tbody>
+    </table>
+  </main>
+
+  <div id="message-area"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/carnets.js"></script>
+</body>
+</html>
