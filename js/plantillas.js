@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 2. OBTENER REFERENCIAS DEL DOM ---
-  const tableBody = document.getElementById("authors-table-body");
+  const tableBody = document.getElementById("plantillas-table-body");
   const messageArea = document.getElementById("message-area");
 
   // --- 3. FUNCIONES DE LA APLICACIÓN ---
@@ -30,26 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * (ENDPOINT: GET /api/autores)
-   * Carga y muestra la lista de autores en la tabla
+   * (ENDPOINT: GET /api/plantillas)
+   * Carga y muestra la lista de plantillas en la tabla
    */
-  async function loadAuthors() {
+  async function loadPlantillas() {
     try {
       // Usamos fetchApi, que es público para GET
-      const response = await fetchApi("/autores");
+      const response = await fetchApi("/plantillas");
       const data = await response.json();
 
       if (!response.ok) throw new Error(data.message);
 
       tableBody.innerHTML = ""; // Limpiar tabla
 
-      data.data.forEach((author) => {
+      data.data.forEach((plantilla) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${author.first_name} ${author.last_name}</td>
-          <td>${author.biography || "N/A"}</td>
+          <td>${plantilla.name}</td>
+          <td>${plantilla.description || "N/A"}</td>
           <td>
-            <button class="delete-button" data-id="${author._id}">
+            <button class="delete-button" data-id="${plantilla._id}">
               Eliminar (Protegido)
             </button>
           </td>
@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * (ENDPOINT: DELETE /api/autores/:id)
-   * Elimina un autor usando la ruta protegida
+   * (ENDPOINT: DELETE /api/plantillas/:id)
+   * Elimina un plantilla usando la ruta protegida
    */
-  async function deleteAuthor(authorId) {
+  async function deletePlantilla(plantillaId) {
     try {
       // ¡Esta es la ruta protegida!
       // 'fetchApi' añadirá el token 'x-token' automáticamente.
-      const response = await fetchApi(`/autores/${authorId}`, {
+      const response = await fetchApi(`/plantillas/${plantillaId}`, {
         method: "DELETE",
       });
 
@@ -80,10 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // ¡ÉXITO!
-      showMessage("Autor eliminado correctamente.", false);
+      showMessage("Plantilla eliminado correctamente.", false);
 
-      // Refrescar la lista de autores
-      loadAuthors();
+      // Refrescar la lista de plantillas
+      loadPlantillas();
     } catch (error) {
       showMessage(error.message, true);
     }
@@ -95,15 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleTableClick(event) {
     // Verificar si se hizo clic en un botón de "eliminar"
     if (event.target.classList.contains("delete-button")) {
-      const authorId = event.target.dataset.id;
+      const plantillaId = event.target.dataset.id;
 
       // Pedir confirmación
       if (
         confirm(
-          `¿Estás seguro de que deseas eliminar al autor con ID: ${authorId}?`
+          `¿Estás seguro de que deseas eliminar la plantilla con ID: ${plantillaId}?`
         )
       ) {
-        deleteAuthor(authorId);
+        deletePlantilla(plantillaId);
       }
     }
   }
@@ -114,5 +114,5 @@ document.addEventListener("DOMContentLoaded", () => {
   tableBody.addEventListener("click", handleTableClick);
 
   // Cargar los autores al iniciar la página
-  loadAuthors();
+  loadPlantillas();
 });

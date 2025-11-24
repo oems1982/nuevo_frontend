@@ -3,36 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestionar Autores - MyBooks</title>
+  <title>Gestionar Plantillas - ID App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
-    <h1>Gestión de Autores</h1>
+    <h1>Gestión de Plantillas</h1>
     <a href="index.html" style="text-decoration: none; color: #007bff;">Volver al Dashboard</a>
   </header>
 
   <main class="container">
-    <h2>Lista de Autores</h2>
-    <p>Aquí puedes ver y eliminar autores. La eliminación es una ruta protegida por JWT.</p>
+      <h1>Registrar Nueva Plantilla</h1>
+      <p>Crea una nueva plantilla.</p>
+
+      <form id="plantilla-form">
+        <div>
+          <label for="plantilla-name">Nombre:</label>
+          <input type="text" id="plantilla-name" required />
+        </div>
+        <div>
+          <label for="plantilla-description">Descripcion:</label>
+          <input type="text" id="plantilla-description" required />
+        </div>    
+        <button type="submit">Crear Plantilla</button>
+      </form>
+    </main>
+
+  <main class="container">
+    <h2>Lista de Plantillas</h2>
+    <p>Aquí puedes ver y eliminar plantillas. La eliminación es una ruta protegida por JWT.</p>
     
-    <table id="authors-table">
+    <table id="plantillas-table">
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Biografía</th>
+          <th>Descripcion</th>
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody id="authors-table-body">
+      <tbody id="plantillas-table-body">
         </tbody>
     </table>
   </main>
-
+ 
   <div id="message-area"></div>
 
   <script src="js/api.js"></script>
-  <script src="js/autores.js"></script>
+  <script src="js/plantillas.js"></script>
 </body>
 </html>
