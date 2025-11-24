@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       data.data.forEach((empresa) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${empresa.name} ${empresa.nit}</td>
-          <td>${empresa.adress || "N/A"}</td>
+          <td>${empresa.name}</td>
+          <td>${empresa.nit}</td>
           <td>
             <button class="delete-button" data-id="${empresa._id}">
               Eliminar (Protegido)

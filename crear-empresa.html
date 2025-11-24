@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - ID App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Crear Empresa</h1>
+      <a href="empresas.html" style="text-decoration: none; color: #007bff">
+        Volver a Gestionar Empresas</a>
+    </header>
+
+    <main class="container">
+      <p>Crea Nueva Empresa.</p>
+
+      <form id="crear-empresa-form">
+        <div>
+          <label for="reg-name">Nombre:</label>
+          <input type="text" id="reg-name" required />
+        </div>
+        <div>
+          <label for="reg-nit">Nit:</label>
+          <input type="text" id="reg-nit" required />
+        </div>
+        <div>
+          <label for="reg-adress">Direccion:</label>
+          <input type="text" id="reg-adress" required />
+        </div>
+        
+        <button type="submit">Crear Empresa</button>
+      </form>
+    </main>
+
+    <div id="message-area"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/crear-empresa.js"></script>
+  </body>
+</html>

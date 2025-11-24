@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - ID App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Crear Carnet</h1>
+      <a href="carnets.html" style="text-decoration: none; color: #007bff">
+        Volver a Gestionar Carnets</a>
+    </header>
+
+    <main class="container">
+      <p>Crea Nuevo Carnet.</p>
+
+      <form id="crear-carnet-form">
+        <div>
+          <label for="reg-fname">Nombre:</label>
+          <input type="text" id="reg-fname" required />
+        </div>
+        <div>
+          <label for="reg-lname">Apellido:</label>
+          <input type="text" id="reg-lname" required />
+        </div>
+        <div>
+          <label for="reg-documento">Documento:</label>
+          <input type="text" id="reg-documento" required />
+        </div>
+        <div>
+          <label for="reg-cargo">Cargo:</label>
+          <input type="text" id="reg-cargo" required />
+        </div>
+
+        <button type="submit">Crear Carnet</button>
+      </form>
+    </main>
+
+    <div id="message-area"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/crear-carnet.js"></script>
+  </body>
+</html>
