@@ -1,0 +1,87 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Buscar Carnet — ID Digital</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo">ID</div>
+        <div class="brand-text">
+          <h1>ID Digital</h1>
+          <p class="muted">Buscar carnet por número de documento</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <small class="muted">Público — sin login</small>
+      </div>
+    </header>
+
+    <section class="search-panel">
+      <label for="doc-input">Número de documento</label>
+      <div class="search-row">
+        <input id="doc-input" type="text" inputmode="numeric" placeholder="Ej: 12345678" />
+        <button id="search-btn" class="btn primary">Buscar</button>
+      </div>
+      <p id="hint" class="muted small">Introduce el documento y presiona Buscar — la consulta se realizará al backend público.</p>
+    </section>
+
+    <section id="result-area" class="result-area">
+      <!-- Aquí se inyectará el carnet -->
+      <div id="card-wrap" class="card-wrap hidden">
+        <div id="carnet-card" class="carnet-card">
+          <div class="carnet-left">
+            <div class="org-block">
+              <div class="org-logo">LOGO</div>
+              <div class="org-name">Organización / Empresa</div>
+            </div>
+            <div class="photo-frame">
+              <img id="foto" alt="Foto titular" src="" />
+            </div>
+            <div class="meta small muted" id="doc-meta">Documento: <span id="meta-doc"></span></div>
+            <div class="meta small muted" id="status-meta">Estado: <span id="meta-status"></span></div>
+          </div>
+
+          <div class="carnet-right">
+            <div class="holder-name" id="holder-name">NOMBRE APELLIDO</div>
+            <div class="holder-role" id="holder-role">Cargo / Rol</div>
+
+            <div class="info-grid">
+              <div><span class="label">Documento</span><div id="info-documento" class="value"></div></div>
+              <div><span class="label">Empresa</span><div id="info-empresa" class="value"></div></div>
+              <div><span class="label">Vigencia</span><div id="info-vigencia" class="value"></div></div>
+              <div><span class="label">Email</span><div id="info-email" class="value"></div></div>
+            </div>
+
+            <div id="extra-fields" class="extra-fields"></div>
+
+            <div class="card-footer">
+              <div class="issued">Emitido: <span id="info-created"></span></div>
+              <div class="actions">
+                <button id="download-btn" class="btn outline">Descargar PNG</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="message" class="message muted"></div>
+    </section>
+
+    <footer class="app-footer">
+      <small class="muted">Página generada localmente — consulta pública al backend.</small>
+    </footer>
+  </main>
+
+  <!-- Dependencia para descarga como imagen (html2canvas) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNa5mQp3P1u8r4XqJq8y7lI0Qx6xX/3nJQm0KZs0l1qvWq3qK2DAg+5yVgQFq3u3r1nqQ2kVgZ6zN0Q7Q4T1+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/script_card.js"></script>
+</body>
+</html>

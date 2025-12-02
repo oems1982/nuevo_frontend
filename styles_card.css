@@ -1,0 +1,123 @@
+/* styles.css */
+:root{
+  --bg: #f6f8fb;
+  --card-bg: linear-gradient(180deg,#ffffff 0%, #f7fbff 100%);
+  --accent: #0b72ff;
+  --muted: #6b7280;
+  --shadow: 0 6px 22px rgba(11,114,255,0.08);
+  --radius: 14px;
+  --glass: rgba(255,255,255,0.7);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(11,114,255,0.06), transparent), var(--bg);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:28px;
+  min-height:100vh;
+}
+
+.app{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.app-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+
+.brand{display:flex;gap:12px;align-items:center}
+.brand-logo{
+  width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#00c2ff);
+  color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;
+  box-shadow:var(--shadow);
+}
+.brand-text h1{margin:0;font-size:18px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.header-actions{font-size:13px;color:var(--muted)}
+
+.search-panel{
+  background:rgba(255,255,255,0.9);
+  padding:16px;border-radius:12px;box-shadow:var(--shadow);
+}
+.search-row{display:flex;gap:12px;margin-top:8px}
+input[type="text"]{
+  flex:1;padding:10px 12px;border-radius:10px;border:1px solid #e6eefc;background:white;font-size:15px;
+  outline:none;box-shadow:none;
+}
+.btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);color:white}
+.btn.outline{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--accent)}
+
+.result-area{display:flex;flex-direction:column;gap:12px}
+
+.card-wrap{display:flex;justify-content:center}
+.hidden{display:none}
+
+/* CARNET */
+.carnet-card{
+  width:880px;
+  display:flex;
+  gap:20px;
+  background:var(--card-bg);
+  border-radius:16px;
+  padding:22px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  border:1px solid rgba(11,114,255,0.05);
+  align-items:stretch;
+}
+
+.carnet-left{
+  width:230px;display:flex;flex-direction:column;align-items:center;gap:16px;padding:10px;
+  border-right:1px dashed rgba(15,23,42,0.04);
+}
+
+.org-block{display:flex;flex-direction:column;align-items:center;gap:6px}
+.org-logo{
+  width:74px;height:74px;border-radius:12px;background:linear-gradient(135deg,#111827,#0b72ff);
+  display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+  font-size:18px;box-shadow:var(--shadow);
+}
+.org-name{font-size:13px;font-weight:600}
+
+.photo-frame{
+  width:160px;height:200px;border-radius:10px;background:linear-gradient(180deg,#f0f6ff,#ffffff);
+  display:flex;align-items:center;justify-content:center;padding:6px;box-shadow:0 6px 18px rgba(2,6,23,0.06);
+  overflow:hidden;
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
+
+.meta{font-size:13px;color:var(--muted)}
+
+.carnet-right{flex:1;display:flex;flex-direction:column;gap:12px;padding:6px}
+
+.holder-name{font-size:22px;font-weight:700;color:#071436}
+.holder-role{font-size:14px;color:var(--accent);font-weight:700}
+
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.label{font-size:12px;color:var(--muted);display:block}
+.value{font-size:14px;font-weight:600;margin-top:4px}
+
+.extra-fields{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid rgba(2,6,23,0.03)}
+
+.app-footer{text-align:center;color:var(--muted);margin-top:10px}
+
+/* responsive */
+@media (max-width:980px){
+  .carnet-card{width:100%;flex-direction:column;align-items:center}
+  .carnet-left{width:100%;border-right:none;border-bottom:1px dashed rgba(15,23,42,0.04);padding-bottom:12px}
+  .info-grid{grid-template-columns:1fr}
+}
